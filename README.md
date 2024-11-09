@@ -1,4 +1,4 @@
-# car_rental_management_system
+# Car_rental_management_system
 The Car Rental Management System is a web application designed to manage the car rental process. It provides functionalities for user registration, vehicle management, booking, and payment processing. This system allows users to book vehicles for specific dates, manage their bookings, and make payments securely.
 
 # Features
