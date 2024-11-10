@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Car Rental Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="welcome-page">
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        &#9776; <!-- Hamburger icon -->
+    </div>
+
+    <div class="welcome-container">
+        <h1>Welcome to RentDrive!!</h1>
+        <p>We're excited to have you with us! Whether you’re planning a trip or need a vehicle for everyday use,
+            RentDrive offers a wide range of top-quality cars to suit your needs. Our easy-to-use platform allows
+            you to quickly browse available vehicles, make reservations, and get on the road with ease.
+           Thank you for choosing RentDrive. We look forward to making your driving experience smooth and enjoyable!</p>
+    </div>
+
+    <div id="menu" class="menu">
+        <ul>
+            <li><a href="booking.html">BOOKINGS</a></li>
+            <li><a href="terms.html">TERMS AND CONDITIONS</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="index.html">LOGOUT</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
+

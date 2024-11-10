@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Payment Information</h1>
+    </div>
+
+    <div class="total-amount">
+        Total Amount Due: $<span id="totalAmount">150</span>
+    </div>
+
+    <div class="payment-methods">
+        <label><input type="radio" name="paymentMethod" value="creditCard" onclick="showPaymentForm('creditCardForm')"> Credit Card</label>
+        <label><input type="radio" name="paymentMethod" value="debitCard" onclick="showPaymentForm('debitCardForm')"> Debit Card</label>
+        <label><input type="radio" name="paymentMethod" value="paypal" onclick="showPaymentForm('paypalForm')"> PayPal</label>
+    </div>
+
+    <!-- Credit Card Form -->
+    <div id="creditCardForm" class="payment-form">
+        <label for="creditCardNumber">Card Number</label>
+        <input type="text" id="creditCardNumber" placeholder="Enter credit card number">
+        
+        <label for="creditCardExpiry">Expiration Date</label>
+        <input type="text" id="creditCardExpiry" placeholder="MM/YY">
+        
+        <label for="creditCardCVV">CVV</label>
+        <input type="number" id="creditCardCVV" placeholder="Enter CVV">
+    </div>
+
+    <!-- Debit Card Form -->
+    <div id="debitCardForm" class="payment-form">
+        <label for="debitCardNumber">Card Number</label>
+        <input type="text" id="debitCardNumber" placeholder="Enter debit card number">
+        
+        <label for="debitCardExpiry">Expiration Date</label>
+        <input type="text" id="debitCardExpiry" placeholder="MM/YY">
+        
+        <label for="debitCardCVV">CVV</label>
+        <input type="number" id="debitCardCVV" placeholder="Enter CVV">
+    </div>
+
+    <!-- PayPal Form -->
+    <div id="paypalForm" class="payment-form">
+        <p>You will be redirected to PayPal to complete your payment.</p>
+    </div>
+
+    <div class="buttons">
+        <button class="pay-btn" onclick="processPayment()">Pay Now</button>
+        <button class="cancel-btn" onclick="cancelPayment()">Cancel</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
