@@ -1,67 +1,98 @@
-/* Common styles for both pages */
+/* Global Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-}
-
-/* Login Page specific styles */
-body.login-page {
-    background-image: url('background.jpg');  /* Background image for login page */
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
+    background-color: #f7f7f7;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 90%;
     max-width: 400px;
-}
-
-h1 {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     text-align: center;
 }
 
+/* Headers */
+h1, h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Forms */
 label {
     display: block;
     margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
 }
 
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+input[type="number"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc; /* Grey border */
-    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons */
 button {
-    width: 100%;
-    padding: 10px;
-    background: #007BFF;
-    color: white;
+    padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007BFF;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background: #0056b3;
+    background-color: #0056b3;
 }
 
-p {
-    text-align: center;
+.confirm-btn {
+    background-color: #28a745;
 }
 
+.confirm-btn:hover {
+    background-color: #218838;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
+}
+
+/* Links */
 a {
     color: #007BFF;
     text-decoration: none;
@@ -71,219 +102,106 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Register Page specific styles */
-body.register-page {
-    background-image: url('background.jpg');  /* Background image for register page */
+/* Login Page */
+body.login-page {
+    background-image: url('background.jpg');
     background-position: center;
     background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.container {
-    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+.container.login {
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
 }
 
-/* Welcome Page specific styles */
-body.welcome-page {
-    background-image: url('background1.jpg');  /* Background image for welcome page */
+/* Register Page */
+body.register-page {
+    background-image: url('background.jpg');
     background-position: center;
     background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+/* Welcome Page */
+body.welcome-page {
+    background-image: url('background1.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .welcome-container {
-    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 40px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-button {
-    width: auto;
-    padding: 10px 20px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-/* Hamburger menu */
-.hamburger-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    color: white;
-}
-
-.menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.menu ul li {
-    margin: 10px 0;
-}
-
-.menu ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.menu ul li a:hover {
-    text-decoration: underline;
-}
-/* Centered FAQ Page Styles */
+/* FAQ Page */
 body.faq-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
 }
 
 .faq-container {
-    width: 80%;
     max-width: 600px;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.faq-container h1 {
-    color: #333;
-    margin-bottom: 20px;
 }
 
 .faq-item h2 {
-    font-size: 1.2em;
     color: #007BFF;
     margin-top: 15px;
 }
 
 .faq-item p {
-    font-size: 1em;
     color: #555;
     margin: 10px 0 20px;
 }
-/* Centered Terms Page Styles */
+
+/* Terms Page */
 body.terms-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
 }
 
 .terms-container {
-    width: 80%;
     max-width: 600px;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-}
-
-.terms-container h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.terms-container p {
-    font-size: 1em;
-    color: #555;
-    margin: 0 0 20px;
-    text-align: center;
 }
 
 .terms-container ul {
     padding-left: 20px;
-    color: #555;
     list-style-type: disc;
 }
 
-.terms-container li {
-    margin: 10px 0;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-}
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
+/* Vehicle Page */
 .vehicle-category {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
 }
+
 .vehicle-category button {
-    padding: 10px 20px;
+    padding: 10px 15px;
     border: none;
-    background-color: #007bff;
+    background-color: #007BFF;
     color: #fff;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
-.search-bar {
-    text-align: center;
-    margin-bottom: 20px;
+
+.vehicle-category button:hover {
+    background-color: #0056b3;
 }
-.search-bar input[type="text"] {
-    padding: 10px;
-    width: 50%;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
+
 .vehicle-card {
     display: flex;
     border: 1px solid #ddd;
@@ -291,7 +209,13 @@ body {
     margin-bottom: 20px;
     padding: 10px;
     background-color: #f9f9f9;
+    transition: box-shadow 0.3s ease;
 }
+
+.vehicle-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .vehicle-card img {
     width: 200px;
     height: 120px;
@@ -299,162 +223,34 @@ body {
     border-radius: 5px;
     margin-right: 20px;
 }
-.vehicle-details {
-    flex: 1;
-}
+
 .vehicle-details h3 {
     margin: 0;
     font-size: 1.2em;
 }
-.rate {
-    color: #007bff;
-    font-weight: bold;
-}
+
 .calendar-input {
-    margin: 10px 0;
     display: flex;
     gap: 10px;
     align-items: center;
 }
+
 .calendar-input input {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
-}
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-.buttons button {
-    padding: 10px 20px;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.confirm-btn {
-    background-color: #28a745;
-}
-.cancel-btn {
-    background-color: #dc3545;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.container {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+.calendar-input input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.summary-details {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #333;
-}
-
-.summary-details p {
-    margin: 10px 0;
-}
-
-.total-amount {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 20px;
-}
-
+/* Payment Page */
 .payment-status {
-    text-align: center;
-    font-size: 16px;
     color: #28a745;
     font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.buttons button {
-    padding: 10px 20px;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.pay-btn {
-    background-color: #007bff;
-}
-
-.dashboard-btn {
-    background-color: #6c757d;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.total-amount {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 20px;
-}
-
-.payment-methods {
-    margin-bottom: 20px;
-}
-
-.payment-methods label {
-    display: block;
-    margin-bottom: 10px;
 }
 
 .payment-methods input[type="radio"] {
@@ -469,96 +265,9 @@ body {
     display: block;
 }
 
-.payment-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.payment-form input[type="text"],
-.payment-form input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.buttons button {
-    padding: 10px 20px;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.pay-btn {
-    background-color: #28a745;
-}
-
-.cancel-btn {
-    background-color: #dc3545;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.profile-info p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #333;
-}
-
+/* Profile Page */
 .profile-info label {
     font-weight: bold;
-}
-
-.buttons {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.buttons button {
-    padding: 10px 20px;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
-}
-
-.edit-btn {
-    background-color: #007bff;
 }
 
 .change-password-section {
@@ -570,76 +279,39 @@ body {
     display: block;
 }
 
-.change-password-section label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.change-password-section input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.save-btn {
-    background-color: #28a745;
-}
-
-.cancel-btn {
-    background-color: #dc3545;
-}
-/* Base styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Centered contact box */
-.container {
-    width: 90%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
-}
-
-/* Heading style */
-.container h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Contact info styles */
-.contact-info {
-    font-size: 16px;
-    color: #333;
-}
-
+/* Contact Page */
 .contact-info p {
     margin: 10px 0;
 }
 
-/* Social media links style */
 .social-links a {
     display: block;
-    color: #007bff;
-    text-decoration: none;
-    margin: 5px 0;
     font-weight: bold;
 }
 
-.social-links a:hover {
-    text-decoration: underline;
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
 }
