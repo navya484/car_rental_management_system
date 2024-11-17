@@ -1,12 +1,15 @@
 from flask import Flask, request, jsonify
 from sqlalchemy import create_engine, Column, Integer, String, Float, Date, Enum, ForeignKey, Text, TIMESTAMP, func, DECIMAL
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
+from sqlalchemy.exc import SQLAlchemyError
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import enum
+from flask_cors import CORS
 import logging
-
+app = Flask(__name__)
+CORS(app)
 # Database connection setup
 username = 'root' 
 password = 'root123'  
@@ -150,7 +153,7 @@ Base.metadata.create_all(engine)
 logging.basicConfig(filename='car_rental.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
 # Initialize Flask app and JWT
-app = Flask(__name__)
+
 app.config['JWT_SECRET_KEY'] = '7356226196'
 jwt = JWTManager(app)
 
@@ -169,19 +172,30 @@ def is_vehicle_available(session, vehicle_id, start_date, end_date):
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
-    username = data['username']
-    password = data['password']
+    username = data.get('username')  # Using get in case key doesn't exist
+    password = data.get('password')
+
+    print(f"Received login attempt - Username: {username}, Password: {password}")
 
     # Check if the user exists by querying the user table using the provided username
     user = session.query(User).filter_by(username=username).first()
 
+    if user:
+        print(f"User found: {user.username}")
+        print(f"password:{user.password}")
+    else:
+        print("No user found with the provided username.")
+
     # If the user exists and the password matches the hashed password stored in the database
-    if user and check_password_hash(user.password, password):
+    if user and user.password== password:
+        print("Login successful")
         # Generate a JWT token upon successful login
         access_token = create_access_token(identity=user.user_id)
+        print(f"JWT Token generated: {access_token}")
         return jsonify(access_token=access_token)
     
     # If user doesn't exist or credentials are incorrect
+    print("Invalid username or password.")
     return jsonify({'error': 'Invalid username or password'}), 401
 
 
@@ -231,11 +245,7 @@ def promote_user_to_admin(user_id):
     
     return jsonify(user.as_dict()), 200
 
-# Fetch all vehicles
-@app.route('/vehicles', methods=['GET'])
-def get_vehicles():
-    vehicles = session.query(Vehicle).all()
-    return jsonify([vehicle.as_dict() for vehicle in vehicles])
+
 
 # Add new vehicle
 @app.route('/vehicles', methods=['POST'])
@@ -358,6 +368,31 @@ def pay_for_booking(booking_id):
         'status': booking.status,
         'payment_status': payment.status
     }), 200
+@app.route('/api/vehicles', methods=['GET'])
+def get_vehicles():
+    try:
+        # Query to get available vehicles
+        vehicles = Vehicle.query.filter_by(status='Available').all()
+        
+        # Convert the result to a list of dictionaries
+        vehicle_list = [
+            {
+                "vehicle_id": vehicle.vehicle_id,
+                "make": vehicle.make,
+                "model": vehicle.model,
+                "year": vehicle.year,
+                "category": vehicle.category,
+                "daily_rate": vehicle.daily_rate
+            }
+            for vehicle in vehicles
+        ]
+        
+        return jsonify(vehicle_list)
+    
+    except SQLAlchemyError as err:
+        return jsonify({"error": str(err)}), 500
+
+
 
 # Run the app
 if __name__ == '__main__':
