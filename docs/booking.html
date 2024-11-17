@@ -3,54 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Booking</title>
+    <title>Booking</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="container">
-    <div class="header">
-        <h1>Book Your Vehicle</h1>
-    </div>
-
-    <div class="vehicle-category">
-        <button onclick="filterCategory('Economy')">Economy</button>
-        <button onclick="filterCategory('Luxury')">Luxury</button>
-        <button onclick="filterCategory('SUV')">SUV</button>
-    </div>
-
-    <div class="search-bar">
-        <input type="text" id="searchModel" placeholder="Search for a specific model...">
-    </div>
-
-    <div id="vehicle-list">
-        <!-- Vehicle Card Example -->
-        <div class="vehicle-card" data-category="SUV">
-            <img src="suv.jpg" alt="SUV">
-            <div class="vehicle-details">
-                <h3>FORD ENDEAVOR</h3>
-                <p>Category: SUV</p>
-                <p>Availability: <span>Available</span></p>
-                <p>Daily Rate: <span class="rate" id="rate">100</span> USD</p>
-                <div class="calendar-input">
-                    <label>Start Date:</label>
-                    <input type="date" id="startDate" onchange="calculateTotal()">
-                    <label>End Date:</label>
-                    <input type="date" id="endDate" onchange="calculateTotal()">
-                </div>
-                <p>Total Amount: <span id="totalAmount">0</span> USD</p>
-                <div class="buttons">
-                    <a href="booking-summary.html">
-                        <button class="confirm-btn" onclick="confirmBooking()">Confirm Booking</button>
-                    </a>
-                    <button class="cancel-btn" onclick="cancelBooking()">Cancel</button>
-                </div>
-            </div>
+        <h1>Book your car</h1>
+    
+        <!-- Booking Section -->
+        <div id="bookingSection">
+            <h3>Create Booking</h3>
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" required><br>
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" required><br>
+            <label for="totalAmount">Total Amount:</label>
+            <input type="number" id="totalAmount" required><br>
+            <button onclick="createBooking()">Book Now</button> <!-- Pass vehicle ID dynamically -->
         </div>
-    </div>
-</div>
-
-<script src="script.js"></script>
-
+        <script src="script.js"></script>
 </body>
 </html>
+
