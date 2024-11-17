@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 # Database connection setup
 username = 'root' 
-password = '200515'  
+password = 'root123'  
 host = 'localhost'  
 database = 'rental'  
 
