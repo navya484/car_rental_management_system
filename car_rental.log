@@ -173,3 +173,21 @@
 2024-11-17 22:35:14,520:INFO:127.0.0.1 - - [17/Nov/2024 22:35:14] "GET /vehicles HTTP/1.1" 200 -
 2024-11-17 22:38:02,800:INFO:127.0.0.1 - - [17/Nov/2024 22:38:02] "OPTIONS /vehicles HTTP/1.1" 200 -
 2024-11-17 22:38:02,809:INFO:127.0.0.1 - - [17/Nov/2024 22:38:02] "GET /vehicles HTTP/1.1" 200 -
+2024-11-17 22:49:39,117:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-17 22:49:39,118:INFO:[33mPress CTRL+C to quit[0m
+2024-11-17 22:49:39,119:INFO: * Restarting with stat
+2024-11-17 22:49:39,720:WARNING: * Debugger is active!
+2024-11-17 22:49:39,720:INFO: * Debugger PIN: 463-706-783
+2024-11-17 22:54:21,796:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-17 22:54:21,800:INFO:[33mPress CTRL+C to quit[0m
+2024-11-17 22:54:21,801:INFO: * Restarting with stat
+2024-11-17 22:54:22,568:WARNING: * Debugger is active!
+2024-11-17 22:54:22,568:INFO: * Debugger PIN: 463-706-783
+2024-11-17 22:54:43,687:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-17 22:54:43,687:INFO:[33mPress CTRL+C to quit[0m
+2024-11-17 22:54:43,689:INFO: * Restarting with stat
+2024-11-17 22:54:44,399:WARNING: * Debugger is active!
+2024-11-17 22:54:44,399:INFO: * Debugger PIN: 463-706-783
