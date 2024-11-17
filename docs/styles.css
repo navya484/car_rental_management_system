@@ -32,7 +32,7 @@ body {
 h1, h2 {
     text-align: center;
     font-size: 24px;
-    color: #333;
+    color: #636f09;
 }
 
 h2 {
@@ -45,7 +45,7 @@ label {
     display: block;
     margin: 10px 0 5px;
     font-weight: bold;
-    color: #333;
+    color: #d6bfbf;
 }
 
 input[type="text"],
@@ -65,7 +65,7 @@ input[type="password"]:focus,
 input[type="email"]:focus,
 input[type="number"]:focus {
     border-color: #596b7f;
-    box-shadow: 0 0 5px rgba(13, 38, 64, 0.5);
+    box-shadow: 0 0 5px rgba(213, 224, 236, 0.5);
 }
 
 /* Buttons */
@@ -125,7 +125,7 @@ body.welcome-page {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(231, 219, 219, 0.1);
 }
 
 /* Welcome Page */
