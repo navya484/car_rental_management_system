@@ -231,3 +231,8 @@ async function processPayment(bookingId) {
         alert("An error occurred during payment.");
     }
 }
+function toggleMenu() {
+    const menu = document.getElementById("menu-list");
+    menu.classList.toggle("show"); 
+}
+
