@@ -236,3 +236,7 @@ function toggleMenu() {
     menu.classList.toggle("show"); 
 }
 
+function logout() {
+    window.location.href = "index.html";  
+}
+
