@@ -32,7 +32,7 @@ body {
 h1, h2 {
     text-align: center;
     font-size: 24px;
-    color: #636f09;
+    color: #d0d1cb;
 }
 
 h2 {
@@ -226,20 +226,20 @@ body.welcome-page {
 
 /* FAQ Page */
 body.faq-page {
-    background-color: #f4f4f4;
+    background-color: #5f5db0;
 }
 
 .faq-container,
 .terms-container {
     max-width: 600px;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(75, 90, 177);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .faq-item h2 {
-    color: #03254a;
+    color: #d7dee5;
     margin-top: 15px;
 }
 
@@ -397,7 +397,7 @@ tr:hover {
 /* Header */
 h1, h2 {
     text-align: center;
-    color: #444;
+    color: hsl(0, 8%, 97%);
 }
 
 /* Input Fields */
@@ -469,7 +469,7 @@ label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: #d6d0d0;
 }
 
 /* Footer */
