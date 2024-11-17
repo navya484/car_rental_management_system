@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #58a6ff, #82d3ff);
+    background: linear-gradient(135deg, #162536, #256181);
     color: #333;
     min-height: 100vh;
     display: flex;
@@ -64,8 +64,8 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
 input[type="number"]:focus {
-    border-color: #007BFF;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #596b7f;
+    box-shadow: 0 0 5px rgba(13, 38, 64, 0.5);
 }
 
 /* Buttons */
@@ -74,14 +74,14 @@ button {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background-color: #007BFF;
+    background-color: #042f5e;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #042c57;
 }
 
 .confirm-btn {
@@ -195,7 +195,7 @@ body.welcome-page {
 }
 
 #menu-list a:hover {
-    background-color: #58a6ff;
+    background-color: #052b57;
     color: white;
     transform: translateY(-2px);
 }
@@ -239,7 +239,7 @@ body.faq-page {
 }
 
 .faq-item h2 {
-    color: #007BFF;
+    color: #03254a;
     margin-top: 15px;
 }
 
@@ -259,7 +259,7 @@ body.faq-page {
 .vehicle-category button {
     padding: 10px 15px;
     border: none;
-    background-color: #007BFF;
+    background-color: #041c36;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -311,7 +311,7 @@ body.faq-page {
 }
 
 .calendar-input input:focus {
-    border-color: #007BFF;
+    border-color: #031a34;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
@@ -367,7 +367,7 @@ table {
 }
 
 th {
-    background-color: #007BFF;
+    background-color: #011c39;
     color: white;
 }
 
