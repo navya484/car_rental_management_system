@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 # Database connection setup
 username = 'root' 
-password = 'root123'  
+password = '200515'  
 host = 'localhost'  
 database = 'rental'  
 
@@ -368,11 +368,16 @@ def pay_for_booking(booking_id):
         'status': booking.status,
         'payment_status': payment.status
     }), 200
-@app.route('/api/vehicles', methods=['GET'])
+@app.route('/vehicles', methods=['GET'])
 def get_vehicles():
     try:
+        print("Fetching available vehicles...")
+        
         # Query to get available vehicles
-        vehicles = Vehicle.query.filter_by(status='Available').all()
+        vehicles = session.query(Vehicle).filter_by(status=VehicleStatus.available).all()
+
+        # Log the fetched data on the server side
+        print(f"Fetched {len(vehicles)} vehicles from the database.")
         
         # Convert the result to a list of dictionaries
         vehicle_list = [
@@ -381,16 +386,22 @@ def get_vehicles():
                 "make": vehicle.make,
                 "model": vehicle.model,
                 "year": vehicle.year,
-                "category": vehicle.category,
+                "category": vehicle.category.name,  # Convert enum to string
                 "daily_rate": vehicle.daily_rate
             }
             for vehicle in vehicles
         ]
         
+        # Log the vehicle data
+        print(f"Vehicle data: {vehicle_list}")
+        
         return jsonify(vehicle_list)
     
     except SQLAlchemyError as err:
+        print(f"Error fetching vehicles: {str(err)}")
         return jsonify({"error": str(err)}), 500
+
+
 
 
 

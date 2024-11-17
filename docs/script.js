@@ -33,63 +33,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     }
 });
 
-// Fetch available vehicles
-document.addEventListener('DOMContentLoaded', async () => {
-    const token = localStorage.getItem('access_token');
-    if (!token) {
-        alert("You must log in to view available vehicles.");
-        window.location.href = "login.html";
-        return;
-    }
 
-    try {
-        const response = await fetch("http://127.0.0.1:5000/vehicles", {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-        });
 
-        if (response.ok) {
-            const vehicles = await response.json();
-            populateVehicleTable(vehicles);
-        } else {
-            alert("Unable to fetch vehicles. Please try again.");
-        }
-    } catch (error) {
-        console.error("Error fetching vehicles:", error);
-        alert("An error occurred while fetching vehicles.");
-    }
-});
-
-// Populate vehicle table
-function populateVehicleTable(vehicles) {
-    const tableBody = document.querySelector("#vehicles-table tbody");
-    tableBody.innerHTML = ""; // Clear existing rows
-
-    if (vehicles.length === 0) {
-        const row = tableBody.insertRow();
-        const cell = row.insertCell();
-        cell.colSpan = 6;
-        cell.textContent = "No vehicles available.";
-        cell.style.textAlign = "center";
-        return;
-    }
-
-    vehicles.forEach(vehicle => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${vehicle.vehicle_id}</td>
-            <td>${vehicle.make}</td>
-            <td>${vehicle.model}</td>
-            <td>${vehicle.year}</td>
-            <td>${vehicle.category}</td>
-            <td>$${vehicle.daily_rate}</td>
-        `;
-        tableBody.appendChild(row);
-    });
-}
 
 // Register a new user
 document.getElementById("registerForm").addEventListener("submit", async function (e) {
@@ -231,9 +176,6 @@ async function processPayment(bookingId) {
         alert("An error occurred during payment.");
     }
 }
-function toggleMenu() {
-    const menu = document.getElementById("menu-list");
-    menu.classList.toggle("show"); 
-}
+
 
 
