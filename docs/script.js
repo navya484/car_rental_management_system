@@ -4,6 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     // Get user input values
     const loginId = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    
 
     // Log user input values for debugging
     console.log("Username:", loginId);
@@ -50,6 +51,65 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    fetchAvailableVehicles();
+});
+async function fetchAvailableVehicles() {
+    const token = localStorage.getItem('access_token'); // Get the user's token for authentication
+    if (!token) {
+        alert("Please log in to view available vehicles.");
+        window.location.href = "login.html"; // Redirect to login page if no token
+        return;
+    }
+    try {
+        const response = await fetch('http://127.0.0.1:5000/vehicles', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            populateVehicleTable(data);
+        } else {
+            console.error("Failed to fetch vehicles:", response.status);
+            alert("Unable to fetch vehicles. Please try again later.");
+        }
+    } catch (error) {
+        console.error("Error fetching vehicles:", error);
+        alert("An error occurred while fetching vehicles. Please try again.");
+    }
+}
+
+// Populate the vehicle table dynamically
+function populateVehicleTable(vehicles) {
+    const tableBody = document.querySelector('#vehicles-table tbody');
+    tableBody.innerHTML = ''; // Clear existing rows
+
+    if (vehicles.length === 0) {
+        const row = tableBody.insertRow();
+        const cell = row.insertCell();
+        cell.colSpan = 6;
+        cell.textContent = 'No vehicles available at the moment.';
+        cell.style.textAlign = 'center';
+        return;
+    }
+    vehicles.forEach(vehicle => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${vehicle.vehicle_id}</td>
+            <td>${vehicle.make}</td>
+            <td>${vehicle.model}</td>
+            <td>${vehicle.year}</td>
+            <td>${vehicle.category}</td>
+            <td>$${vehicle.daily_rate}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
 
 
 document.getElementById('registerForm').addEventListener('submit', async function (e) {
@@ -77,42 +137,44 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 });
 
 
-function filterCategory(category) {
-    const vehicles = document.querySelectorAll('.vehicle-card');
-    vehicles.forEach(vehicle => {
-        vehicle.style.display = vehicle.getAttribute('data-category') === category ? 'flex' : 'none';
-    });
-}
-
-function calculateTotal() {
-    const rate = parseFloat(document.getElementById('rate').innerText);
-    const startDate = new Date(document.getElementById('startDate').value);
-    const endDate = new Date(document.getElementById('endDate').value);
-
-    if (startDate && endDate && endDate >= startDate) {
-        const duration = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
-        const totalAmount = duration * rate;
-        document.getElementById('totalAmount').innerText = totalAmount;
+function calculateTotal(element) {
+    const row = element.closest('tr');
+    const startDate = new Date(row.querySelector('.start-date').value);
+    const endDate = new Date(row.querySelector('.end-date').value);
+    const rate = parseInt(row.querySelector('.rate').dataset.rate, 10);
+    const totalAmountElement = row.querySelector('.total-amount');
+    
+    if (startDate && endDate && startDate <= endDate) {
+        const days = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1; // Include end date
+        const totalAmount = days * rate;
+        totalAmountElement.textContent = totalAmount.toFixed(2);
     } else {
-        document.getElementById('totalAmount').innerText = '0';
+        totalAmountElement.textContent = "0";
     }
 }
 
-function confirmBooking() {
-    const startDate = document.getElementById('startDate').value;
-    const endDate = document.getElementById('endDate').value;
-    if (startDate && endDate) {
-        alert('Booking Confirmed!');
-        // Navigate to summary page with booking details as URL parameters (optional)
-        window.location.href = `booking-summary.html?startDate=${startDate}&endDate=${endDate}&rate=${document.getElementById('rate').innerText}&totalAmount=${document.getElementById('totalAmount').innerText}`;
+function confirmBooking(button) {
+    const row = button.closest('tr');
+    const model = row.cells[2].textContent;
+    const startDate = row.querySelector('.start-date').value;
+    const endDate = row.querySelector('.end-date').value;
+    const totalAmount = row.querySelector('.total-amount').textContent;
+    
+    if (startDate && endDate && totalAmount > 0) {
+        alert(`Booking confirmed for ${model} from ${startDate} to ${endDate}. Total amount: ${totalAmount} USD`);
+        // Here, you could redirect or send data to your server
     } else {
-        alert('Please select both start and end dates.');
+        alert("Please select valid dates for booking.");
     }
 }
 
-function cancelBooking() {
-    window.location.href = 'welcome.html';
+function cancelBooking(button) {
+    const row = button.closest('tr');
+    row.querySelector('.start-date').value = '';
+    row.querySelector('.end-date').value = '';
+    row.querySelector('.total-amount').textContent = '0';
 }
+
 // Function to redirect to the payment page
 function redirectToPayment() {
     // Replace 'payment.html' with the actual URL of your payment page
